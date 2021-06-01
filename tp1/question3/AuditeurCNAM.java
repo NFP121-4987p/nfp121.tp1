@@ -7,6 +7,7 @@ package question3;
  * @author à compléter
  * @see java.lang.String, java.lang.Math
  */
+import java.text.Normalizer;
 public class AuditeurCNAM {
     /** l'attribut nom de chaque auditeur. */
     private String nom;
@@ -45,7 +46,16 @@ public class AuditeurCNAM {
      *         homonymes...
      */
     public String login() {
-        return "";// à compléter
+        String nom = this.nom;
+        String prenom = this.prenom;
+        String login = "";
+        if (nom.length() > 6)
+            nom = nom.substring(0,6);
+        login = nom + "_" + prenom.substring(0,1);
+        String normalized = Normalizer.normalize(login, Normalizer.Form.NFD);
+        login = normalized.replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+        login = login.replaceAll("\\W","_");
+        return login.toLowerCase();// à compléter
     }
 
     /**
@@ -54,7 +64,7 @@ public class AuditeurCNAM {
      * @return son nom
      */
     public String nom() {
-        return null;// à compléter
+        return this.nom;// à compléter
     }
 
     /**
@@ -63,7 +73,7 @@ public class AuditeurCNAM {
      * @return son prénom
      */
     public String prenom() {
-        return null;// à compléter
+        return this.prenom;// à compléter
     }
 
     /**
@@ -72,7 +82,7 @@ public class AuditeurCNAM {
      * @return son matricule
      */
     public String matricule() {
-        return null;// à compléter
+        return this.matricule;// à compléter
     }
 
     /**

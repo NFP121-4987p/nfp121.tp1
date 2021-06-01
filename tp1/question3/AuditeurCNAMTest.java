@@ -63,6 +63,10 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
      * "test". Vous pouvez ébaucher le corps grace au menu contextuel
      * "Enregistrer une méthode de test".
      */
+    public void test_matricule() {
+        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("Dupont","paul", "03-1234");
+        assertTrue(auditeur1.matricule()=="03-1234");
+    }
 
     /** Un test de la méthode toString(). */
     public void test_toString() {
